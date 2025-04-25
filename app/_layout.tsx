@@ -1,18 +1,27 @@
 import { ChatIco } from "@/assets/images/chat";
 import { ProfileIco } from "@/assets/images/profileIco";
 import { SettingsIco } from "@/assets/images/settings";
-import { useColorStore } from "@/store/useColorStore";
+import { useBackgroundStore, useColorStore } from "@/store/useColorStore";
 import { Tabs } from "expo-router";
 import { View, Text } from "react-native";
 
+const darkColors = ["#90132F", "#1A477D", "#000000", "#1C621B"];
+
 export default function RootLayout() {
-  const { color } = useColorStore();
+  const { color, selectColor } = useColorStore();
+  const { background } = useBackgroundStore();
+  const isDarkBackground = darkColors.includes(color);
+  const tabBackgroundColor = isDarkBackground ? "#FFFFFF" : "#000000";
 
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
+        tabBarStyle: {
+          backgroundColor: tabBackgroundColor,
+          borderTopWidth: 0,
+        },
       }}
     >
       <Tabs.Screen
@@ -29,7 +38,9 @@ export default function RootLayout() {
               }}
             >
               <ProfileIco focused={focused} />
-              <Text style={{ fontSize: 13, color: focused ? "red" : color }}>
+              <Text
+                style={{ fontSize: 13, color: focused ? selectColor : color }}
+              >
                 Profile
               </Text>
             </View>
@@ -50,7 +61,9 @@ export default function RootLayout() {
               }}
             >
               <ChatIco focused={focused} />
-              <Text style={{ fontSize: 13, color: focused ? "red" : color }}>
+              <Text
+                style={{ fontSize: 13, color: focused ? selectColor : color }}
+              >
                 Chat
               </Text>
             </View>
@@ -71,7 +84,9 @@ export default function RootLayout() {
               }}
             >
               <SettingsIco focused={focused} />
-              <Text style={{ fontSize: 13, color: focused ? "red" : color }}>
+              <Text
+                style={{ fontSize: 13, color: focused ? selectColor : color }}
+              >
                 Settings
               </Text>
             </View>
