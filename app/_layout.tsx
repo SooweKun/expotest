@@ -24,6 +24,7 @@ export default function RootLayout() {
         },
       }}
     >
+      <Tabs.Screen name="index" options={{ href: null }} />
       <Tabs.Screen
         name="profile"
         options={{
@@ -48,7 +49,7 @@ export default function RootLayout() {
         }}
       />
       <Tabs.Screen
-        name="index"
+        name="chat/index"
         options={{
           tabBarIcon: ({ focused }) => (
             <View
@@ -70,6 +71,7 @@ export default function RootLayout() {
           ),
         }}
       />
+      <Tabs.Screen name="chat/message" options={{ href: null }} />
       <Tabs.Screen
         name="settings"
         options={{

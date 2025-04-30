@@ -1,8 +1,30 @@
-import { UseIcoStore } from "@/store/useIcoStore";
+import { UseIcoStore, UseIcoUserStore } from "@/store/useIcoStore";
 import { Image, Text, TouchableOpacity, View } from "react-native";
+import * as ImagePicker from "expo-image-picker";
+import { useState } from "react";
 
 export const Profile = () => {
+  const [image, setImage] = useState("");
   const { ico } = UseIcoStore();
+  const { userIco } = UseIcoUserStore();
+
+  const PickImage = async () => {
+    const perrmisson = await ImagePicker.requestMediaLibraryPermissionsAsync();
+
+    if (perrmisson.granted === false) {
+      return alert("Permission to access camera roll is required!");
+    }
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images, // Только изображения
+      allowsEditing: true, // Разрешить редактирование
+      aspect: [4, 3], // Соотношение сторон
+      quality: 1, // Качество изображения
+    });
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri); // Сохраняем URI выбранного изображения
+    }
+  };
 
   return (
     <View
@@ -48,10 +70,17 @@ export const Profile = () => {
             />
             <Image style={{ width: 22, height: 22 }} source={ico} />
           </View>
-          <Image
-            style={{ width: 100, height: 100, borderRadius: "100%" }}
-            source={require("@/assets/images/foto1.jpg")}
-          />
+          {image ? (
+            <Image
+              source={{ uri: image }}
+              style={{ width: 100, height: 100, borderRadius: "100%" }}
+            />
+          ) : (
+            <Image
+              style={{ width: 100, height: 100, borderRadius: "100%" }}
+              source={require("@/assets/images/foto1.jpg")}
+            />
+          )}
           <View
             style={{
               width: 45,
@@ -72,7 +101,7 @@ export const Profile = () => {
           <Text style={{ color: "black", fontWeight: 500 }}>
             на моем крыле мифрил
           </Text>
-          <Text style={{ color: "black", fontWeight: 500 }}>()</Text>
+          <Image source={userIco} style={{ width: 22, height: 22 }} />
         </View>
       </View>
       <TouchableOpacity
@@ -90,7 +119,9 @@ export const Profile = () => {
           top: 10,
         }}
       >
-        <Text style={{ color: "white" }}>изм</Text>
+        <Text style={{ color: "white" }} onPress={PickImage}>
+          изм
+        </Text>
       </TouchableOpacity>
     </View>
   );
