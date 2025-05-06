@@ -75,7 +75,7 @@ export const Content = () => {
 
   return (
     <ScrollView
-      style={{ width: "100%", height: "100%", overflowY: "auto" }}
+      style={{ width: "100%", height: "100%", overflowY: "auto", flex: 1 }}
       bounces={false}
     >
       {Users.map(({ title, img, id }) => {

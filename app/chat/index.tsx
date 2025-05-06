@@ -1,7 +1,7 @@
 import { Content } from "@/modules/chat/comonents/contetnt";
 import { Search } from "@/modules/chat/comonents/search";
 import { useBackgroundStore } from "@/store/useColorStore";
-import { UseIcoStore, UseIcoUserStore } from "@/store/useIcoStore";
+import { UseIcoUserStore } from "@/store/useIcoStore";
 import { useState } from "react";
 import {
   SafeAreaView,

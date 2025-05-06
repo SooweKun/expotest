@@ -71,7 +71,10 @@ export default function RootLayout() {
           ),
         }}
       />
-      <Tabs.Screen name="chat/message" options={{ href: null }} />
+      <Tabs.Screen
+        name="chat/message"
+        options={{ href: null, tabBarStyle: { display: "none" } }}
+      />
       <Tabs.Screen
         name="settings"
         options={{
