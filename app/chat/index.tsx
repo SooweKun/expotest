@@ -28,7 +28,7 @@ export default function Index() {
   };
 
   return (
-    <Pressable onPress={handleOpen}>
+    <Pressable onPress={handleOpen} style={{ flex: 1 }}>
       <SafeAreaView
         style={{
           display: "flex",
@@ -75,10 +75,10 @@ export default function Index() {
           </View>
           <Search open={open} setOpen={setOpen} />
         </View>
-        <View style={{ width: "100%", height: "95%" }}>
-          <Content />
-        </View>
       </SafeAreaView>
+      <View style={{ flex: 1 }}>
+        <Content />
+      </View>
     </Pressable>
   );
 }

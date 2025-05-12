@@ -6,7 +6,6 @@ import {
   SafeAreaView,
   TouchableOpacity,
   Pressable,
-  Keyboard,
 } from "react-native";
 import { Send } from "./components/Send";
 import { Messages } from "./components/messages";
@@ -72,16 +71,11 @@ export const MessageModule = () => {
           </TouchableOpacity>
         </View>
       </SafeAreaView>
-      <Pressable
+      <View
         style={{ flex: 1, alignItems: "flex-start" }}
-        onPress={() => {
-          console.log("Pressable clicked");
-          Keyboard.dismiss();
-          handleOpen(false);
-        }}
       >
-        <Messages />
-      </Pressable>
+        <Messages handleOpen={handleOpen} />
+      </View>
       <Send handleOpen={handleOpen} open={open} />
     </View>
   );

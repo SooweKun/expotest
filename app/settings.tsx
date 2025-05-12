@@ -1,65 +1,44 @@
 import { Change } from "@/assets/images/change";
 import { ColorPicker } from "@/modules/settings/components/colorPiker";
-import { Profile } from "@/modules/settings/components/profile";
-import { useBackgroundStore } from "@/store/useColorStore";
+import { SettingsModule } from "@/modules/settings/Module";
+import { UseIcoUserStore } from "@/store/useIcoStore";
 import {
   SafeAreaView,
   StatusBar,
   Text,
   TouchableOpacity,
   View,
+  Image,
 } from "react-native";
 
-const darkColors = ["#90132F", "#1A477D", "#000000", "#1C621B"];
-
 export default function Settings() {
-  const { background } = useBackgroundStore();
-  const statusBarStyle = darkColors.includes(background)
-    ? "light-content"
-    : "dark-content";
+  const { userIco } = UseIcoUserStore();
 
   return (
-    <SafeAreaView
-      style={{
-        backgroundColor: background,
-      }}
-    >
-      <StatusBar barStyle={statusBarStyle} />
-      <Profile />
-      <View
+    <View style={{ flex: 1 }}>
+      <SafeAreaView
         style={{
-          width: "100%",
-          height: "100%",
-          backgroundColor: background,
-          display: "flex",
-          alignItems: "center",
-          padding: 20,
-          gap: 20,
+          backgroundColor: "#1A1A1A",
+          height: 99,
+          justifyContent: "center",
         }}
       >
-        <ColorPicker />
-        <TouchableOpacity
+        <StatusBar barStyle="light-content" />
+        <View
           style={{
-            width: "100%",
-            height: 50,
-            backgroundColor: "black",
-            borderColor: "white",
-            borderWidth: 1,
-            borderRadius: 7,
-            padding: 8,
-            display: "flex",
-            flexDirection: "row",
+            justifyContent: "center",
             alignItems: "center",
-            gap: 17,
-            paddingLeft: 18,
+            gap: 5,
+            flexDirection: "row",
           }}
         >
-          <Change />
-          <Text style={{ color: "white", fontWeight: 500, fontSize: 16 }}>
-            Изменить имя
-          </Text>
-        </TouchableOpacity>
-      </View>
-    </SafeAreaView>
+          <Text style={{ color: "white", fontWeight: 500 }}>Settings</Text>
+          {userIco && (
+            <Image source={userIco} style={{ width: 22, height: 22 }} />
+          )}
+        </View>
+      </SafeAreaView>
+      <SettingsModule />
+    </View>
   );
 }

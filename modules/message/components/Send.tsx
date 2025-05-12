@@ -25,7 +25,7 @@ export const Send: FC<Props> = ({ open, handleOpen }) => {
         height: open ? 360 : 90,
         backgroundColor: "black",
         flexDirection: "row",
-        padding: 20,
+        padding: 17,
         alignItems: open ? "flex-start" : "center",
         justifyContent: "space-between",
         gap: 15,
@@ -72,7 +72,9 @@ export const Send: FC<Props> = ({ open, handleOpen }) => {
           alignItems: "center",
         }}
         onPress={() => {
-          handleSend();
+          if (message !== "") {
+            handleSend();
+          }
         }}
       >
         <SendBtn />

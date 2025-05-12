@@ -16,6 +16,6 @@ export const UseIcoStore = create<IconStoreType>((set) => ({
 }));
 
 export const UseIcoUserStore = create<IconUserStoreType>((set) => ({
-  userIco: require("@/assets/images/ico/Ico10.webp"),
+  userIco: null,
   setUserIco: (userIco: any) => set({ userIco }),
 }));

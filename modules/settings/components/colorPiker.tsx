@@ -13,36 +13,35 @@ const CollorArr = [
 ];
 
 export const ColorPicker = () => {
-  const { setColor, setSelectColor } = useColorStore();
+  const { setColor, setSelectColor, color } = useColorStore();
   const { setBackground } = useBackgroundStore();
 
   return (
     <View
       style={{
-        flexDirection: "column",
-        backgroundColor: "black",
-        borderWidth: 1,
-        borderColor: "white",
+        backgroundColor: "#1a1a1a",
         alignItems: "center",
         width: "100%",
-        height: 174,
-        borderRadius: 7,
+        height: 232,
+        borderRadius: 9,
         padding: 8,
-        gap: 17,
+        gap: 13,
       }}
     >
       <View style={{ flexDirection: "column", gap: 5 }}>
-        <Text style={{ color: "white", fontWeight: 500 }}>Select color:</Text>
+        <Text style={{ color: color ? color : "white", fontWeight: 500 }}>
+          Select color:
+        </Text>
         <View
           style={{
             flexDirection: "row",
             gap: 10,
-            width: 284,
-            height: 40,
+            width: 322,
+            height: 44,
             justifyContent: "center",
-            backgroundColor: "white",
+            backgroundColor: "black",
             alignItems: "center",
-            borderRadius: 5,
+            borderRadius: 7,
           }}
         >
           {CollorArr.map(({ color, selectColor }, index) => (
@@ -54,7 +53,7 @@ export const ColorPicker = () => {
                 width: 25,
                 height: 25,
                 borderRadius: 50,
-                borderColor: "white",
+                borderColor: "#9A9A9A",
                 borderWidth: 1,
                 overflow: "hidden",
                 transform: [{ rotate: "45deg" }],
@@ -79,19 +78,19 @@ export const ColorPicker = () => {
         </View>
       </View>
       <View style={{ flexDirection: "column", gap: 5 }}>
-        <Text style={{ color: "white", fontWeight: 500 }}>
+        <Text style={{ color: color ? color : "white", fontWeight: 500 }}>
           Background color:
         </Text>
         <View
           style={{
             flexDirection: "row",
             gap: 10,
-            width: 284,
-            height: 40,
+            width: 322,
+            height: 44,
             justifyContent: "center",
-            backgroundColor: "white",
+            backgroundColor: "black",
             alignItems: "center",
-            borderRadius: 5,
+            borderRadius: 7,
           }}
         >
           {CollorArr.map(({ color }, index) => (
@@ -102,7 +101,7 @@ export const ColorPicker = () => {
                 width: 25,
                 height: 25,
                 borderRadius: 50,
-                borderColor: "white",
+                borderColor: "#9A9A9A",
                 backgroundColor: color,
                 borderWidth: 1,
                 overflow: "hidden",
@@ -111,6 +110,39 @@ export const ColorPicker = () => {
             ></TouchableOpacity>
           ))}
         </View>
+      </View>
+      <View
+        style={{
+          width: 322,
+          height: 44,
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}
+      >
+        <TouchableOpacity
+          style={{
+            backgroundColor: "black",
+            width: 161,
+            justifyContent: "center",
+            alignItems: "center",
+            borderTopLeftRadius: 7,
+            borderBottomLeftRadius: 7,
+          }}
+        >
+          <Text style={{ color: "white" }}>light</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{
+            backgroundColor: "white",
+            width: 161,
+            justifyContent: "center",
+            alignItems: "center",
+            borderTopRightRadius: 7,
+            borderBottomRightRadius: 7,
+          }}
+        >
+          <Text>night</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );

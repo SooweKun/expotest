@@ -74,10 +74,7 @@ export const Content = () => {
   const router = useRouter();
 
   return (
-    <ScrollView
-      style={{ width: "100%", height: "100%", overflowY: "auto", flex: 1 }}
-      bounces={false}
-    >
+    <ScrollView style={{ flex: 1, }}>
       {Users.map(({ title, img, id }) => {
         return (
           <TouchableOpacity

@@ -1,17 +1,12 @@
 import { ChatIco } from "@/assets/images/chat";
 import { ProfileIco } from "@/assets/images/profileIco";
 import { SettingsIco } from "@/assets/images/settings";
-import { useBackgroundStore, useColorStore } from "@/store/useColorStore";
+import { useColorStore } from "@/store/useColorStore";
 import { Tabs } from "expo-router";
 import { View, Text } from "react-native";
 
-const darkColors = ["#90132F", "#1A477D", "#000000", "#1C621B"];
-
 export default function RootLayout() {
   const { color, selectColor } = useColorStore();
-  const { background } = useBackgroundStore();
-  const isDarkBackground = darkColors.includes(color);
-  const tabBackgroundColor = isDarkBackground ? "#FFFFFF" : "#000000";
 
   return (
     <Tabs
@@ -19,8 +14,9 @@ export default function RootLayout() {
         headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: {
-          backgroundColor: tabBackgroundColor,
           borderTopWidth: 0,
+          backgroundColor: "#1C1C1C",
+          height: 80,
         },
       }}
     >
@@ -40,7 +36,7 @@ export default function RootLayout() {
             >
               <ProfileIco focused={focused} />
               <Text
-                style={{ fontSize: 13, color: focused ? selectColor : color }}
+                style={{ fontSize: 11, color: focused ? selectColor : color }}
               >
                 Profile
               </Text>
@@ -63,7 +59,7 @@ export default function RootLayout() {
             >
               <ChatIco focused={focused} />
               <Text
-                style={{ fontSize: 13, color: focused ? selectColor : color }}
+                style={{ fontSize: 11, color: focused ? selectColor : color }}
               >
                 Chat
               </Text>
@@ -90,7 +86,7 @@ export default function RootLayout() {
             >
               <SettingsIco focused={focused} />
               <Text
-                style={{ fontSize: 13, color: focused ? selectColor : color }}
+                style={{ fontSize: 11, color: focused ? selectColor : color }}
               >
                 Settings
               </Text>

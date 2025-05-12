@@ -20,9 +20,9 @@ export const ProfileIco: FC<Props> = ({ focused }: any) => {
   return (
     <Animated.View style={animatedStyle}>
       <Svg
-        height={28}
+        height="25"
         viewBox="0 -960 960 960"
-        width={28}
+        width="25"
         fill={focused ? selectColor : color}
       >
         <Path
