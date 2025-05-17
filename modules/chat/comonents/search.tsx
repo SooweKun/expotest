@@ -1,58 +1,42 @@
 import { SearchIco } from "@/assets/images/search";
-import { FC, useState } from "react";
-import { TextInput, TouchableOpacity, View } from "react-native";
+import { useRouter } from "expo-router";
+import { FC } from "react";
+import { TouchableOpacity, Text, Image, Animated, View } from "react-native";
 
 interface Props {
-  open: boolean;
-  setOpen: (open: boolean) => void;
+  searchHeight: Animated.Value;
 }
 
-export const Search: FC<Props> = ({ setOpen, open }) => {
-  const [searchText, setSearchText] = useState("");
-
-  const handleCLick = () => {
-    setOpen(!open);
-  };
+export const Search: FC<Props> = ({ searchHeight }) => {
+  const router = useRouter();
 
   return (
-    <View
+    <Animated.View
       style={{
-        width: open ? 250 : 33,
-        height: 33,
-        flexDirection: "row",
+        width: "100%",
+        height: searchHeight,
+        backgroundColor: "#1a1a1a",
         alignItems: "center",
-        justifyContent: "flex-end",
-        borderWidth: 1,
-        borderColor: "white",
-        backgroundColor: "black",
-        borderRadius: 4,
+        justifyContent: "center",
+        overflow: "hidden",
       }}
     >
       <TouchableOpacity
+        onPress={() => router.push("/chat/search")}
         style={{
-          width: 33,
-          height: 33,
+          width: 302,
+          height: 35,
+          backgroundColor: "#101010",
+          borderRadius: 8,
+          flexDirection: "row",
           alignItems: "center",
           justifyContent: "center",
-          position: "absolute",
-          zIndex: 1,
+          gap: 6,
         }}
-        onPress={handleCLick}
       >
-        <SearchIco />
+        <SearchIco fill="white" />
+        <Text style={{ color: "white", fontWeight: 500 }}>Поиск</Text>
       </TouchableOpacity>
-      <TextInput
-        value={open ? searchText : ""}
-        editable={open}
-        onChangeText={(text) => setSearchText(text)}
-        placeholder={open ? "поиск" : ""}
-        style={{
-          width: "100%",
-          height: "100%",
-          paddingLeft: 10,
-          color: "white",
-        }}
-      />
-    </View>
+    </Animated.View>
   );
 };

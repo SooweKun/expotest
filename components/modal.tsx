@@ -3,10 +3,10 @@ import { TouchableOpacity, View, Text } from "react-native";
 
 interface Props {
   children: React.ReactNode;
-  handleOpen: () => void;
+  setOpen: (open: boolean) => void;
 }
 
-export const Modal: FC<Props> = ({ children, handleOpen }) => {
+export const Modal: FC<Props> = ({ children, setOpen }) => {
   return (
     <TouchableOpacity
       style={{
@@ -14,17 +14,21 @@ export const Modal: FC<Props> = ({ children, handleOpen }) => {
         width: "100%",
         height: "100%",
         alignItems: "center",
+        flex: 1,
         paddingTop: 5,
+        borderWidth: 1,
+        borderColor: "red",
       }}
-      onPress={handleOpen}
+      onPress={() => setOpen(false)}
     >
       <View
-        onStartShouldSetResponder={() => true}
         style={{
           width: 328,
           height: 300,
           backgroundColor: "black",
           borderRadius: 25,
+          borderWidth: 1,
+          borderColor: "gray",
         }}
       >
         <Text

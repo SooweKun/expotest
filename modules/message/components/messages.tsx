@@ -1,3 +1,4 @@
+import { useBackgroundStore } from "@/store/useColorStore";
 import { useMessageStore } from "@/store/useMessageStore";
 import { FC, useEffect, useState } from "react";
 import {
@@ -7,6 +8,7 @@ import {
   StyleSheet,
   Keyboard,
   Pressable,
+  Image,
 } from "react-native";
 
 interface Props {
@@ -15,6 +17,7 @@ interface Props {
 
 export const Messages: FC<Props> = ({ handleOpen }) => {
   const { message } = useMessageStore();
+  const { background } = useBackgroundStore();
   const [socket, setSocket] = useState(message);
 
   useEffect(() => {
@@ -24,12 +27,12 @@ export const Messages: FC<Props> = ({ handleOpen }) => {
   return (
     <ScrollView
       keyboardShouldPersistTaps="handled"
-      style={styles.scrollView}
+      style={{ width: "100%", flex: 1, backgroundColor: background }}
       contentContainerStyle={styles.contentContainer}
       onTouchEnd={() => handleOpen(false)}
     >
       <Pressable
-        style={{ width: "100%", alignItems: "flex-start" }}
+        style={{ width: "100%", alignItems: "flex-start", gap: 10 }}
         onPress={() => {
           console.log("Pressable clicked");
           Keyboard.dismiss();
@@ -43,9 +46,37 @@ export const Messages: FC<Props> = ({ handleOpen }) => {
             justifyContent: "center",
             alignItems: "flex-start",
             padding: 8,
+            maxWidth: 170,
           }}
         >
           <Text style={{ color: "white" }}>привет</Text>
+        </View>
+        <View style={{ borderRadius: 7 }}>
+          <Image
+            style={{
+              width: 170,
+              height: 200,
+              backgroundColor: "black",
+              borderTopLeftRadius: 7,
+              borderTopRightRadius: 7,
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+            source={require("@/assets/images/image62.png")}
+          />
+          <Text
+            style={{
+              color: "white",
+              textAlign: "left",
+              backgroundColor: "black",
+              borderBottomLeftRadius: 7,
+              borderBottomRightRadius: 7,
+              padding: 6,
+              maxWidth: 170,
+            }}
+          >
+            Привет как дела ? чем занимаешься ? что делал вчера ?
+          </Text>
         </View>
       </Pressable>
       {socket.map((item, index) => (
@@ -65,6 +96,7 @@ export const Messages: FC<Props> = ({ handleOpen }) => {
               justifyContent: "center",
               alignItems: "flex-start",
               padding: 8,
+              maxWidth: 180,
             }}
           >
             <Text style={{ color: "white" }}>{item}</Text>
@@ -79,7 +111,6 @@ const styles = StyleSheet.create({
   scrollView: {
     flex: 1,
     width: "100%",
-    backgroundColor: "#fff",
   },
 
   contentContainer: {

@@ -11,25 +11,15 @@ export default function ProfilePage() {
     : "dark-content";
 
   return (
-    <SafeAreaView
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: background,
-      }}
-    >
-      <StatusBar barStyle={statusBarStyle} />
-      <View
+    <View style={{ flex: 1 }}>
+      <SafeAreaView
         style={{
           backgroundColor: background,
-          width: "100%",
-          height: "100%",
-          alignItems: "center",
         }}
       >
-        <ProfileModule />
-      </View>
-    </SafeAreaView>
+        <StatusBar barStyle={statusBarStyle} />
+      </SafeAreaView>
+      <ProfileModule />
+    </View>
   );
 }

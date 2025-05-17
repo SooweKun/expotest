@@ -15,7 +15,7 @@ export const Content = () => {
           backgroundColor: "#1a1a1a",
           width: 362,
           height: 263,
-          maxHeight: 293,
+          maxHeight: 393,
           borderRadius: 15,
         }}
       >
@@ -29,7 +29,9 @@ export const Content = () => {
           }}
         >
           <Text style={{ color: "white" }}>email:</Text>
-          <Text style={{ color: "white", fontSize: 17 }}>test@mail.ru</Text>
+          <Text style={{ color: "white", fontSize: 17 }}>
+            enemytest@mail.ru
+          </Text>
         </View>
         <View
           style={{
@@ -41,11 +43,12 @@ export const Content = () => {
           }}
         >
           <Text style={{ color: "white" }}>user name:</Text>
-          <Text style={{ color: color, fontSize: 17 }}>@morteit</Text>
+          <Text style={{ color: color, fontSize: 17 }}>@enemy</Text>
         </View>
         <View
           style={{
             width: "100%",
+            maxHeight: 100,
             borderBottomWidth: 1,
             borderBottomColor: color,
             gap: 5,
@@ -54,7 +57,8 @@ export const Content = () => {
         >
           <Text style={{ color: "white" }}>description:</Text>
           <Text style={{ color: "white", fontSize: 17 }}>
-            Sobor Ovردam ist eine bedeutende Sakralbauten in der Niederlande.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
+            eaque et natus repellendus.
           </Text>
         </View>
       </View>

@@ -45,6 +45,10 @@ export default function RootLayout() {
         }}
       />
       <Tabs.Screen
+        name="chat/enemyProfile"
+        options={{ href: null, tabBarStyle: { display: "none" } }}
+      />
+      <Tabs.Screen
         name="chat/index"
         options={{
           tabBarIcon: ({ focused }) => (
@@ -69,6 +73,14 @@ export default function RootLayout() {
       />
       <Tabs.Screen
         name="chat/message"
+        options={{ href: null, tabBarStyle: { display: "none" } }}
+      />
+      <Tabs.Screen
+        name="chat/archive"
+        options={{ href: null, tabBarStyle: { display: "none" } }}
+      />
+      <Tabs.Screen
+        name="chat/search"
         options={{ href: null, tabBarStyle: { display: "none" } }}
       />
       <Tabs.Screen

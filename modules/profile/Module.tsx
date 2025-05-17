@@ -1,10 +1,10 @@
 import { View } from "react-native";
-import { Content } from "./components/content";
 import { Profile } from "./components/profile";
+import { Content } from "./components/content";
 
 export const ProfileModule = () => {
   return (
-    <View style={{gap: 20, flexDirection: "column", width: "100%"}}>
+    <View style={{ flex: 1, backgroundColor: "black" }}>
       <Profile />
       <Content />
     </View>

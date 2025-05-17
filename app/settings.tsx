@@ -1,15 +1,6 @@
-import { Change } from "@/assets/images/change";
-import { ColorPicker } from "@/modules/settings/components/colorPiker";
 import { SettingsModule } from "@/modules/settings/Module";
 import { UseIcoUserStore } from "@/store/useIcoStore";
-import {
-  SafeAreaView,
-  StatusBar,
-  Text,
-  TouchableOpacity,
-  View,
-  Image,
-} from "react-native";
+import { SafeAreaView, StatusBar, Text, View, Image } from "react-native";
 
 export default function Settings() {
   const { userIco } = UseIcoUserStore();

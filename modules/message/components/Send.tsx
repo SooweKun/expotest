@@ -22,23 +22,23 @@ export const Send: FC<Props> = ({ open, handleOpen }) => {
     <View
       style={{
         width: "100%",
-        height: open ? 360 : 90,
-        backgroundColor: "black",
+        height: open ? 350 : 80,
+        backgroundColor: "#1a1a1a",
         flexDirection: "row",
         padding: 17,
-        alignItems: open ? "flex-start" : "center",
+        paddingTop: 17,
         justifyContent: "space-between",
         gap: 15,
       }}
-    >
+    > 
       <TouchableOpacity
         style={{
-          width: 40,
-          height: 40,
+          width: 33,
+          height: 33,
           justifyContent: "center",
           alignItems: "center",
           borderWidth: 1,
-          borderColor: "white",
+          borderColor: "black",
           borderRadius: 100,
         }}
       >
@@ -47,11 +47,9 @@ export const Send: FC<Props> = ({ open, handleOpen }) => {
       <TextInput
         style={{
           width: 250,
-          height: 40,
-          backgroundColor: "#1B1717",
+          height: 33,
+          backgroundColor: "black",
           borderRadius: 15,
-          borderWidth: 1,
-          borderColor: "white",
           paddingLeft: 13,
           color: "white",
         }}
@@ -63,12 +61,12 @@ export const Send: FC<Props> = ({ open, handleOpen }) => {
       />
       <TouchableOpacity
         style={{
-          width: 40,
-          height: 40,
+          width: 33,
+          height: 33,
           borderWidth: 1,
-          borderColor: "white",
+          borderColor: "black",
           borderRadius: 100,
-          justifyContent: "center",
+          justifyContent: "center", 
           alignItems: "center",
         }}
         onPress={() => {

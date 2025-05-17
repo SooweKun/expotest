@@ -1,6 +1,5 @@
-import { SafeAreaView, TouchableOpacity, View, Text } from "react-native";
+import { View } from "react-native";
 import { ColorPicker } from "./components/colorPiker";
-import { Change } from "@/assets/images/change";
 import { Content } from "./components/content";
 
 export const SettingsModule = () => {
